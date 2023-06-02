@@ -12,10 +12,6 @@ if (isset($postData['email']) &&  isset($postData['password'])) {
                 'email' => $user['email'],
             ];
         } else {
-            /**
-             * @TODO Formateur : le cours doit expliquer la fonction sprintf
-             * (+ lien vers la doc FR)
-             */
             $errorMessage = sprintf('Les informations envoyées ne permettent pas de vous identifier : (%s/%s)',
                 $postData['email'],
                 $postData['password']
@@ -48,3 +44,5 @@ if (isset($postData['email']) &&  isset($postData['password'])) {
         Bonjour <?php echo($loggedUser['email']); ?> !
     </div>
 <?php endif; ?>
+
+

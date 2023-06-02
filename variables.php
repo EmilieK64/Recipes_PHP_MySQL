@@ -24,25 +24,25 @@ $users = [
 $recipes = [
     [
         'title' => 'Salade niçoise',
-        'recipe' => '',
+        'recipe' => 'Etape 1 : ...',
         'author' => 'michel.andre@exemple.com',
         'is_enabled' => true,
     ],
     [
         'title' => 'Aïoli',
-        'recipe' => '',
+        'recipe' => 'Etape 1 : ...',
         'author' => 'michel.andre@exemple.com',
         'is_enabled' => false,
     ],
     [
         'title' => 'Escalope milanaise',
-        'recipe' => '',
+        'recipe' => 'Etape 1 : ...',
         'author' => 'mat.veli@exemple.com',
         'is_enabled' => true,
     ],
     [
         'title' => 'Salade Romaine',
-        'recipe' => '',
+        'recipe' => 'Etape 1 : ...',
         'author' => 'laurine.shell@exemple.com',
         'is_enabled' => false,
     ],
