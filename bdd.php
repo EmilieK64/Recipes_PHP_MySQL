@@ -1,6 +1,6 @@
 <?php
 
-$dsn = 'mysql:dbname=partage_de_recettes;host=127.0.0.1';
+$dsn = 'mysql:dbname=we_love_food;host=127.0.0.1';
 $user = 'root';
 $password='root';
 $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING];
@@ -10,7 +10,7 @@ $pdo = new PDO($dsn, $user, $password);
 
 try
 {
-	$db = new PDO('mysql:host=localhost;dbname=recipes;charset=utf8', 'root', 'root');
+	$db = new PDO('mysql:host=localhost;dbname=we_love_food;charset=utf8', 'root', 'root');
 }
 catch (Exception $e)
 {
@@ -19,31 +19,25 @@ catch (Exception $e)
 
 // Si tout va bien, on peut continuer
 
-// Ecriture de la requête
-$sqlQuery = 'INSERT INTO recipes(title, recipe, author, is_enabled) VALUES (:title, :recipe, :author, :is_enabled)';
+// // Ecriture de la requête
+// $sqlQuery = 'INSERT INTO recipes(title, recipe, author, is_enabled) VALUES (:title, :recipe, :author, :is_enabled)';
 
-// Préparation
-$insertRecipe = $db->prepare($sqlQuery);
+// // Préparation
+// $insertRecipe = $db->prepare($sqlQuery);
 
-// Exécution ! La recette est maintenant en base de données
-$insertRecipe->execute(
-    [
-        'title' => 'Salade niçoise',
-        'recipe' => 'Etape 1 : ...',
-        'author' => 'michel.andre@exemple.com',
-        'is_enabled' => true,
-    ]
-);
+// // Exécution ! La recette est maintenant en base de données
+// $insertRecipe->execute(
+//     [
+//         'title' => 'Salade niçoise',
+//         'recipe' => 'Etape 1 : ...',
+//         'author' => 'michel.andre@exemple.com',
+//         'is_enabled' => true,
+//     ]
+// );
 
 // On récupère tout le contenu de la table recipes
 $sqlQuery = 'SELECT * FROM recipes';
-$recipesStatement = $mysqlClient->prepare($sqlQuery);
-$recipesStatement->execute();
+$recipesStatement = $db->query($sqlQuery);
 $recipes = $recipesStatement->fetchAll();
 
-// On affiche chaque recette une à une
-foreach ($recipes as $recipe) {
-?>
-    <p><?php echo $recipe['author']; ?></p>
-<?php
-}
+

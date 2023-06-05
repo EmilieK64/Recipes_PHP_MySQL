@@ -18,12 +18,13 @@
 
         <!-- Formulaire de connexion -->
         <?php include_once('login.php'); ?>
+        <?php include_once('bdd.php'); ?>
             <h1>Site de Recettes !</h1>
-            <?php foreach(get_recipes($recipes, $limit) as $recipe) : ?>
+            <?php foreach ($recipes as $recipe) : ?>
                 <article>
                     <h3><?php echo($recipe['title']); ?></h3>
                     <div><?php echo($recipe['recipe']); ?></div>
-                    <i><?php echo(display_author($recipe['author'], $users)); ?></i>
+                    <i><?php echo($recipe['author']); ?></i>
                 </article>
             <?php endforeach ?>
         </div>
