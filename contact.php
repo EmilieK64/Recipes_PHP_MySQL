@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php include_once('header.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +14,6 @@
 <body class="d-flex flex-column min-vh-100">
     <div class="container">
 
-    <?php include_once('header.php'); ?>
         <h1>Contactez nous</h1>
         <form action="submit_contact.php" method="POST">
             <div class="mb-3">
@@ -25,10 +24,6 @@
             <div class="mb-3">
                 <label for="message" class="form-label">Votre message</label>
                 <textarea class="form-control" placeholder="Exprimez vous" id="message" name="message"></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="screenshot" class="form-label">Votre capture d'écran</label>
-                <input type="file" class="form-control" id="screenshot" name="screenshot" />
             </div>
             <button type="submit" class="btn btn-primary">Envoyer</button>
         </form>

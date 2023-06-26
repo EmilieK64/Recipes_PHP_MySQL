@@ -1,8 +1,9 @@
 <?php
-
+//affiche le formulaire, traite les données récupérée du formulaire(e mail et password), stocke l'email en session, une fois connecté : redirige vers home.php.
 $postData = $_POST;
 
 if (isset($postData['email']) &&  isset($postData['password'])) {
+    // var_dump($postData);
     foreach ($users as $user) {
         if (
             $user['email'] === $postData['email'] &&
@@ -11,6 +12,21 @@ if (isset($postData['email']) &&  isset($postData['password'])) {
             $loggedUser = [
                 'email' => $user['email'],
             ];
+
+            /**
+             * Cookie qui expire dans un an
+             */
+            setcookie(
+                'LOGGED_USER',
+                $loggedUser['email'],
+                [
+                    'expires' => time() + 365*24*3600,
+                    'secure' => true,
+                    'httponly' => true,
+                ]
+            );
+
+            $_SESSION['LOGGED_USER'] = $loggedUser['email'];
         } else {
             $errorMessage = sprintf('Les informations envoyées ne permettent pas de vous identifier : (%s/%s)',
                 $postData['email'],
@@ -19,10 +35,17 @@ if (isset($postData['email']) &&  isset($postData['password'])) {
         }
     }
 }
+
+// Si le cookie ou la session sont présentes
+if (isset($_COOKIE['LOGGED_USER']) || isset($_SESSION['LOGGED_USER'])) {
+    $loggedUser = [
+        'email' => $_COOKIE['LOGGED_USER'] ?? $_SESSION['LOGGED_USER'],
+    ];
+}
 ?>
 
-<?php if(!isset($loggedUser)): ?>
-<form action="home.php" method="post">
+<?php if(!isset($loggedUser)) : ?>
+<form action="" method="post">
     <?php if(isset($errorMessage)) : ?>
         <div class="alert alert-danger" role="alert">
             <?php echo($errorMessage); ?>
@@ -42,7 +65,6 @@ if (isset($postData['email']) &&  isset($postData['password'])) {
 <?php else: ?>
     <div class="alert alert-success" role="alert">
         Bonjour <?php echo($loggedUser['email']); ?> !
+        <a href="home.php">Voir les recettes</a>
     </div>
 <?php endif; ?>
-
-

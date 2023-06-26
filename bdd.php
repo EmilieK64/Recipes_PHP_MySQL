@@ -35,6 +35,24 @@ catch (Exception $e)
 //     ]
 // );
 
+// // Ecriture de la requête
+// $sqlQuery = 'INSERT INTO users(full_name, email, password, age) VALUES (:full_name, :email, :password, :age)';
+
+// // Préparation
+// $insertRecipe = $db->prepare($sqlQuery);
+
+// //Exécution ! La recette est maintenant en base de données
+// $insertRecipe->execute(
+//     [
+//         'full_name' => 'Michel André',
+//         'email' => 'michel.andre@exemple.com',
+//         'age' => 34,
+//         'password' => 'S3cr3t', 
+//     ]
+// );
+
+
+
 // On récupère tout le contenu de la table recipes
 $sqlQuery = 'SELECT * FROM recipes';
 $recipesStatement = $db->query($sqlQuery);
