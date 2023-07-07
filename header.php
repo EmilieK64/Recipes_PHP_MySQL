@@ -35,7 +35,7 @@
         </li>
         <?php if(isset($loggedUser)) : ?>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo $rootProject. '/recipes/create.php'; ?>">Ajoutez une recette !</a>
+          <a class="nav-link" href="<?php echo $rootProject . '/recipes/create.php'; ?>">Ajoutez une recette !</a>
         </li>
         <?php endif; ?>
       </ul>
